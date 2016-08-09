@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B548742E1D59A7BD007FB1E9 /* MovieTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B548742D1D59A7BD007FB1E9 /* MovieTableViewController.m */; };
+		B54874311D59A94F007FB1E9 /* SearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B54874301D59A94F007FB1E9 /* SearchTableViewController.m */; };
+		B54874361D59ABAB007FB1E9 /* OMDbModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B54874331D59ABAB007FB1E9 /* OMDbModel.m */; };
+		B54874371D59ABAB007FB1E9 /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = B54874351D59ABAB007FB1E9 /* Movie.m */; };
 		B569F0BE1D59A17000F1DF2D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B569F0BD1D59A17000F1DF2D /* main.m */; };
 		B569F0C11D59A17000F1DF2D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B569F0C01D59A17000F1DF2D /* AppDelegate.m */; };
 		B569F0C41D59A17000F1DF2D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B569F0C31D59A17000F1DF2D /* ViewController.m */; };
@@ -36,6 +40,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B548742C1D59A7BD007FB1E9 /* MovieTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieTableViewController.h; sourceTree = "<group>"; };
+		B548742D1D59A7BD007FB1E9 /* MovieTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieTableViewController.m; sourceTree = "<group>"; };
+		B548742F1D59A94F007FB1E9 /* SearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTableViewController.h; sourceTree = "<group>"; };
+		B54874301D59A94F007FB1E9 /* SearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SearchTableViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		B54874321D59ABAB007FB1E9 /* OMDbModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = OMDbModel.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		B54874331D59ABAB007FB1E9 /* OMDbModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = OMDbModel.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		B54874341D59ABAB007FB1E9 /* Movie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Movie.h; sourceTree = "<group>"; };
+		B54874351D59ABAB007FB1E9 /* Movie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Movie.m; sourceTree = "<group>"; };
 		B569F0B91D59A17000F1DF2D /* OMBDSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OMBDSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B569F0BD1D59A17000F1DF2D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B569F0BF1D59A17000F1DF2D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -80,6 +92,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B54874391D59ABC2007FB1E9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B54874341D59ABAB007FB1E9 /* Movie.h */,
+				B54874351D59ABAB007FB1E9 /* Movie.m */,
+				B54874321D59ABAB007FB1E9 /* OMDbModel.h */,
+				B54874331D59ABAB007FB1E9 /* OMDbModel.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		B569F0B01D59A17000F1DF2D = {
 			isa = PBXGroup;
 			children = (
@@ -103,10 +126,15 @@
 		B569F0BB1D59A17000F1DF2D /* OMBDSearch */ = {
 			isa = PBXGroup;
 			children = (
+				B54874391D59ABC2007FB1E9 /* Model */,
 				B569F0BF1D59A17000F1DF2D /* AppDelegate.h */,
 				B569F0C01D59A17000F1DF2D /* AppDelegate.m */,
 				B569F0C21D59A17000F1DF2D /* ViewController.h */,
 				B569F0C31D59A17000F1DF2D /* ViewController.m */,
+				B548742C1D59A7BD007FB1E9 /* MovieTableViewController.h */,
+				B548742D1D59A7BD007FB1E9 /* MovieTableViewController.m */,
+				B548742F1D59A94F007FB1E9 /* SearchTableViewController.h */,
+				B54874301D59A94F007FB1E9 /* SearchTableViewController.m */,
 				B569F0C51D59A17000F1DF2D /* Main.storyboard */,
 				B569F0CB1D59A17000F1DF2D /* Assets.xcassets */,
 				B569F0CD1D59A17000F1DF2D /* LaunchScreen.storyboard */,
@@ -275,6 +303,10 @@
 			files = (
 				B569F0C41D59A17000F1DF2D /* ViewController.m in Sources */,
 				B569F0C11D59A17000F1DF2D /* AppDelegate.m in Sources */,
+				B54874371D59ABAB007FB1E9 /* Movie.m in Sources */,
+				B54874361D59ABAB007FB1E9 /* OMDbModel.m in Sources */,
+				B548742E1D59A7BD007FB1E9 /* MovieTableViewController.m in Sources */,
+				B54874311D59A94F007FB1E9 /* SearchTableViewController.m in Sources */,
 				B569F0BE1D59A17000F1DF2D /* main.m in Sources */,
 				B569F0CA1D59A17000F1DF2D /* OMBDSearch.xcdatamodeld in Sources */,
 			);
@@ -500,6 +532,7 @@
 				B569F0EB1D59A17100F1DF2D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B569F0EC1D59A17100F1DF2D /* Build configuration list for PBXNativeTarget "OMBDSearchTests" */ = {
 			isa = XCConfigurationList;
@@ -508,6 +541,7 @@
 				B569F0EE1D59A17100F1DF2D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B569F0EF1D59A17100F1DF2D /* Build configuration list for PBXNativeTarget "OMBDSearchUITests" */ = {
 			isa = XCConfigurationList;
@@ -516,6 +550,7 @@
 				B569F0F11D59A17100F1DF2D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
