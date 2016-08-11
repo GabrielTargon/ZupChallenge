@@ -14,7 +14,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="S5m-AD-Jyz">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="S5m-AD-Jyz" customClass="MovieTableViewCell">
                                 <rect key="frame" x="0.0" y="92" width="600" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="S5m-AD-Jyz" id="iZe-GY-aAk">
@@ -33,7 +33,9 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="0yw-b7-9as" kind="show" action="showDetailViewController:sender:" id="3gS-f1-2dn"/>
+                                    <outlet property="movieImage" destination="7Id-OR-nhS" id="2fO-0T-B9R"/>
+                                    <outlet property="movieTitle" destination="FVH-tg-x1z" id="sWe-Ci-ueP"/>
+                                    <segue destination="sWl-Wq-Xfv" kind="show" identifier="showDetail2" id="hyC-Bq-K0n"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -105,19 +107,19 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7O-gg-dqE">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7O-gg-dqE">
                                 <rect key="frame" x="33" y="266" width="547" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FII-c1-2ug">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FII-c1-2ug">
                                 <rect key="frame" x="33" y="340" width="547" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FCw-Xq-DSA">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FCw-Xq-DSA">
                                 <rect key="frame" x="33" y="414" width="547" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -133,7 +135,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="8L1-Yd-Mnb">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="j7G-t7-eYf"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="j7G-t7-eYf">
+                            <connections>
+                                <action selector="saveMovie:" destination="sWl-Wq-Xfv" id="bse-1w-6pV"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="movieActors" destination="FII-c1-2ug" id="5Tb-aY-aXE"/>
@@ -148,7 +154,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3oM-85-jJw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2811" y="1548"/>
+            <point key="canvasLocation" x="1996" y="1545"/>
         </scene>
         <!--Search-->
         <scene sceneID="kcs-pL-K9P">
@@ -158,12 +164,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search movies" id="xin-RE-ASO">
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search movie" id="148-QI-aML">
                             <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
-                                <outlet property="delegate" destination="QNu-cx-5db" id="Sd2-cn-jbH"/>
+                                <outlet property="delegate" destination="QNu-cx-5db" id="O20-ad-CNt"/>
                             </connections>
                         </searchBar>
                         <prototypes>
@@ -188,7 +194,7 @@
                                 <connections>
                                     <outlet property="movieImage" destination="UaQ-pd-ZPO" id="47M-vy-R5M"/>
                                     <outlet property="movieTitle" destination="iIQ-ly-DHQ" id="gCw-RV-Ucu"/>
-                                    <segue destination="0yw-b7-9as" kind="showDetail" id="BdX-1g-who"/>
+                                    <segue destination="sWl-Wq-Xfv" kind="show" identifier="showDetail" id="Kcx-92-uLb"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -205,7 +211,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="searchBar" destination="xin-RE-ASO" id="jV2-gf-090"/>
+                        <outlet property="searchBar" destination="148-QI-aML" id="Vet-LI-F9I"/>
                         <outlet property="searchDisplayController" destination="LwP-Fg-6bf" id="qf7-Pa-gEP"/>
                         <outlet property="searchTableView" destination="Xgf-SW-O2z" id="nTB-o2-AHa"/>
                         <outlet property="tableView" destination="Xgf-SW-O2z" id="3N6-nK-l3I"/>
@@ -215,7 +221,6 @@
                 <searchDisplayController id="LwP-Fg-6bf">
                     <connections>
                         <outlet property="delegate" destination="QNu-cx-5db" id="iaq-gy-XoT"/>
-                        <outlet property="searchBar" destination="xin-RE-ASO" id="HZA-GA-Yfy"/>
                         <outlet property="searchContentsController" destination="QNu-cx-5db" id="nKm-FU-CbO"/>
                         <outlet property="searchResultsDataSource" destination="QNu-cx-5db" id="5hh-2p-fzn"/>
                         <outlet property="searchResultsDelegate" destination="QNu-cx-5db" id="FX9-jS-vh8"/>
@@ -264,26 +269,8 @@
             </objects>
             <point key="canvasLocation" x="305" y="1893"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="yd1-Ao-cwr">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0yw-b7-9as" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4AZ-3T-L31">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="sWl-Wq-Xfv" kind="relationship" relationship="rootViewController" id="aMc-GI-CP7"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9zB-dM-g9j" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1999" y="1548"/>
-        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="BdX-1g-who"/>
+        <segue reference="hyC-Bq-K0n"/>
     </inferredMetricsTieBreakers>
 </document>

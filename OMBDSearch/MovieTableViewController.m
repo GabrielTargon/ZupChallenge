@@ -7,8 +7,15 @@
 //
 
 #import "MovieTableViewController.h"
+#import "MovieTableViewCell.h"
+
+#import "Movies.h"
 
 @interface MovieTableViewController ()
+
+
+@property (strong) NSMutableArray *moviesSaved;
+@property (strong) Movies *movies;
 
 @end
 
@@ -24,6 +31,7 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -32,13 +40,56 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    if (self.moviesSaved) {
+        return self.moviesSaved.count;
+    } else {
+        return 0;
+    }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    MovieTableViewCell *movieCell = (MovieTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    // Create new movie object, passing in movie info at index
+    self->moviesList = movies[indexPath.row];
+    
+    // Poster - use SDWebImage framework to download and load images asynchronously using provided URL's, set placeholder image
+    NSURL *posterURL = [NSURL URLWithString:moviesList.posterImage];
+    [movieCell.movieImage sd_setImageWithURL:posterURL placeholderImage:[UIImage imageNamed:@"No_movie.png"]];
+    
+    // Title-Year
+    movieCell.movieTitle.text = [NSString stringWithFormat:@"%@ (%@)", moviesList.movieTitle, moviesList.movieYear];
+    
+    return searchMovieCell;
+}
+
+
+- (NSManagedObjectContext *)managedObjectContext
+{
+    NSManagedObjectContext *context = nil;
+    id delegate = [[UIApplication sharedApplication] delegate];
+    if ([delegate performSelector:@selector(managedObjectContext)]) {
+        context = [delegate managedObjectContext];
+    }
+    return context;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if (self.movies == nil) {
+        
+    } else {
+        // Fetch the movies from persistent data store
+        NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Movies"];
+        self.moviesSaved = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
+        NSLog(@"%@", self.moviesSaved);
+        [self.tableView reloadData];
+    }
 }
 
 /*

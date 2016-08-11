@@ -10,10 +10,12 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 
 #import "Movie.h"
-#import "OMDbModel.h"
+//#import "Movies.h"
+#import "IMDbModel.h"
 #import "SearchTableViewCell.h"
 #import "DetailViewController.h"
 
+#import "SimplifiedMovieCell.h"
 
 @interface SearchTableViewController ()
 
@@ -22,9 +24,9 @@
 @implementation SearchTableViewController
 {
     // Model
-    OMDbModel *omdbModel;
+    IMDbModel *imdbModel;
+    Movie *moviesList;
     NSMutableArray *movies;
-    NSUserDefaults *defaults;
     
     // View
     UIBarButtonItem *favoriteButton;
@@ -39,14 +41,11 @@
     [super viewDidLoad];
     
     // IMDb API Model
-//    omdbModel = [[OMDbModel alloc] init];
-//    omdbModel.delegate = self;
+    imdbModel = [[IMDbModel alloc] init];
+    imdbModel.delegate = self;
     
     // Temporary Array for Search Results
     movies = [@[] mutableCopy];
-    
-    // Persistent Storage
-    defaults = [NSUserDefaults standardUserDefaults];
     
     // Spinner
     spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
@@ -54,6 +53,7 @@
     [self.view addSubview:spinner];
     
 }
+
 
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -64,12 +64,10 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
     if (movies) {
         return movies.count;
     } else {
@@ -79,34 +77,20 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     SearchTableViewCell *searchMovieCell = (SearchTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    
     // Create new movie object, passing in movie info at index
-    Movie *movie = movies[indexPath.row];
+    self->moviesList = movies[indexPath.row];
     
     // Poster - use SDWebImage framework to download and load images asynchronously using provided URL's, set placeholder image
-    NSURL *posterURL = [NSURL URLWithString:movie.posterImage];
+    NSURL *posterURL = [NSURL URLWithString:moviesList.posterImage];
     [searchMovieCell.movieImage sd_setImageWithURL:posterURL placeholderImage:[UIImage imageNamed:@"No_movie.png"]];
     
-    // Title-Year, IMDb Rating, Rotten Tomatoes Rating
-    searchMovieCell.movieTitle.text = [NSString stringWithFormat:@"%@ (%@)", movie.movieTitle, movie.movieYear];
+    // Title-Year
+    searchMovieCell.movieTitle.text = [NSString stringWithFormat:@"%@ (%@)", moviesList.movieTitle, moviesList.movieYear];
     
     return searchMovieCell;
 }
 
 #pragma mark Table View Delegate Methods
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Remove table cell highlight
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    // Save selected movie object to NSUserDefaults, archive it
-    Movie *movie = movies[indexPath.row];
-    [defaults setObject:[NSKeyedArchiver archivedDataWithRootObject:movie] forKey:@"movieObject"];
-    
-    // Navigate to Movie Info page
-    [self.navigationController pushViewController:movieDetailController animated:YES];
-}
 
 -(void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -117,12 +101,22 @@
     }
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"showDetail"]) {
+        DetailViewController *destination = [segue destinationViewController];
+        
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        destination.movieSelected = [movies objectAtIndex:indexPath.row];
+    }
+}
+
 #pragma mark UISearchBar Delegate Methods
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     // Search database
-    [omdbModel searchIMDb:searchBar.text];
+    [imdbModel searchIMDb:searchBar.text];
     
     // Remove keyboard
     [searchBar resignFirstResponder];
@@ -143,7 +137,6 @@
 -(void)reloadTableView
 {
     [self.searchTableView reloadData];
-    NSLog(@"timer");
 }
 
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
@@ -180,20 +173,45 @@
     // Dispose of any resources that can be recreated.
 }
 
-
-//- (NSManagedObjectContext *)managedObjectContext {
-//    NSManagedObjectContext *context = nil;
-//    id delegate = [[UIApplication sharedApplication] delegate];
-//    if ([delegate performSelector:@selector(managedObjectContext)]) {
-//        context = [delegate managedObjectContext];
-//    }
-//    return context;
-//}
-
 - (IBAction)cancelSearch:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+#pragma mark Core Data
+
+- (NSManagedObjectContext *)managedObjectContext {
+    NSManagedObjectContext *context = nil;
+    id delegate = [[UIApplication sharedApplication] delegate];
+    if ([delegate performSelector:@selector(managedObjectContext)]) {
+        context = [delegate managedObjectContext];
+    }
+    return context;
+}
+
+
+- (IBAction)cancel:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+
+//- (IBAction)save:(id)sender {
+//    NSManagedObjectContext *context = [self managedObjectContext];
+//    
+//    // Create a new managed object
+//    NSManagedObject *newDevice = [NSEntityDescription insertNewObjectForEntityForName:@"Device" inManagedObjectContext:context];
+//    [newDevice setValue:self.nameTextField.text forKey:@"name"];
+//    [newDevice setValue:self.versionTextField.text forKey:@"version"];
+//    [newDevice setValue:self.companyTextField.text forKey:@"company"];
+//    
+//    NSError *error = nil;
+//    // Save the object to persistent store
+//    if (![context save:&error]) {
+//        NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
+//    }
+//    
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//}
 
 /*
 // Override to support conditional editing of the table view.

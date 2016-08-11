@@ -1,5 +1,5 @@
 //
-//  OMDbModel.h
+//  IMDbModel.h
 //  OMDb Search
 //
 //  Created by Joseph Lau on 3/24/15.
@@ -9,15 +9,15 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@protocol OMDbModelDelegate <NSObject>
+@protocol IMDbModelDelegate <NSObject>
 
 -(void)didGetMovies:(NSMutableArray *)moviesArray; // all delegates must adhere to this protocol method
 
 @end
 
-@interface OMDbModel : NSObject
+@interface IMDbModel : NSObject
 
-@property (weak, nonatomic) id <OMDbModelDelegate> delegate; // property for the delegate
+@property (weak, nonatomic) id <IMDbModelDelegate> delegate; // property for the delegate
 
 -(void)searchIMDb:(NSString *)forMovie;
 

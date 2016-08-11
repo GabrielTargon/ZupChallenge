@@ -2,7 +2,7 @@
 //  Movies+CoreDataProperties.m
 //  OMBDSearch
 //
-//  Created by Gabriel Targon on 8/9/16.
+//  Created by Gabriel Targon on 8/11/16.
 //  Copyright © 2016 gabrieltargon. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -13,14 +13,18 @@
 
 @implementation Movies (CoreDataProperties)
 
-@dynamic movieImage;
 @dynamic movieTitle;
 @dynamic movieYear;
 @dynamic movieRuntime;
 @dynamic movieRating;
 @dynamic movieDirector;
 @dynamic movieActors;
-@dynamic movieDescription;
-@dynamic omdbID;
+@dynamic moviePlot;
+@dynamic posterImage;
+@dynamic movieReleased;
+@dynamic movieRatingTomatoes;
+@dynamic movieRatingTomatoesCertificate;
+@dynamic movieRated;
+@dynamic imdbID;
 
 @end

@@ -1,16 +1,17 @@
 //
-//  OMDbModel.m
+//  IMDbModel.m
 //  OMDb Search
 //
 //  Created by Joseph Lau on 3/24/15.
 //  Copyright (c) 2015 Joseph Lau. All rights reserved.
 //
 
-#import "OMDbModel.h"
+#import "IMDbModel.h"
 #import "Movie.h"
-#import "SearchTableViewController.h"
+//#import "Movies.h"
+#import "MovieSearchVC.h"
 
-@implementation OMDbModel
+@implementation IMDbModel
 {
     NSMutableArray *movieIDArray;
     NSMutableArray *moviesArray;
@@ -122,6 +123,28 @@
     if (error != nil) {
         NSLog(@"Error: %@", error.description);
     }
+//    NSManagedObjectModel *managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];
+//    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Challenges" inManagedObjectContext:managedObjectModel];
+//    Movies *movie = [[Movies alloc] initWithEntity:entity insertIntoManagedObjectContext:managedObjectModel];
+//    
+//    NSMutableData *data = [[NSMutableData alloc] init];
+//    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+//    [archiver encodeObject:movieDictionary forKey:@"dictpropertyinmanagedobject"];
+//    [archiver finishEncoding];
+////    [archiver release];
+//    [movie.posterImage setValue:movieDictionary forKey:@"Poster"];
+//    [movie.movieTitle setValue:movieDictionary forKey:@"Title"];
+//    [movie.movieYear setValue:movieDictionary forKey:@"Year"];
+//    [movie.movieRuntime setValue:movieDictionary forKey:@"Runtime"];
+//    [movie.movieRating setValue:movieDictionary forKey:@"imdbRating"];
+//    [movie.movieDirector setValue:movieDictionary forKey:@"Director"];
+//    [movie.movieActors setValue:movieDictionary forKey:@"Actors"];
+//    [movie.movieReleased setValue:movieDictionary forKey:@"Released"];
+//    [movie.moviePlot setValue:movieDictionary forKey:@"Plot"];
+//    [movie.movieRatingTomatoes setValue:movieDictionary forKey:@"tomatoMeter"];
+//    [movie.movieRatingTomatoesCertificate setValue:movieDictionary forKey:@"tomatoImage"];
+//    [movie.movieRated setValue:movieDictionary forKey:@"Rated"];
+//    [movie.imdbID setValue:movieDictionary forKey:@"imdbID"];
     
     // Pass dictionary data into new Movie object
     Movie *movie = [[Movie alloc] init];
@@ -142,15 +165,6 @@
     // Add new Movie object to moviesArray
     [moviesArray addObject:movie];
     
-    /* TO DO: Sort array of movie objects alphabetically with titles */
-//    NSSortDescriptor *distanceSortDiscriptor = [NSSortDescriptor sortDescriptorWithKey:@"Title"
-//                                                                             ascending:YES
-//                                                                              selector:@selector(localizedStandardCompare:)];
-//    
-//    [moviesArray sortUsingDescriptors:@[distanceSortDiscriptor]];
-//    NSArray *sortedArray = [NSArray arrayWithArray:moviesArray];
-//    
-//    NSLog(@"%@", sortedArray);
     
 }
 

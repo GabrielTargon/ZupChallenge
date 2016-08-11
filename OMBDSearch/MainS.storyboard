@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="52i-Fw-dId">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Movie SearchVC-->
+        <scene sceneID="fdv-3V-iNi">
+            <objects>
+                <viewController id="t1U-0w-gAS" customClass="MovieSearchVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jUw-th-2cW"/>
+                        <viewControllerLayoutGuide type="bottom" id="oss-Zn-cr6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Jdy-7c-kHN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="3tF-dx-tPC">
+                                <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="t1U-0w-gAS" id="lKA-ox-yIZ"/>
+                                </connections>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Ifv-ak-lOv">
+                                <rect key="frame" x="0.0" y="108" width="320" height="460"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="3tF-dx-tPC" firstAttribute="trailing" secondItem="Ifv-ak-lOv" secondAttribute="trailing" id="5c8-Ie-9Ol"/>
+                            <constraint firstItem="Ifv-ak-lOv" firstAttribute="leading" secondItem="Jdy-7c-kHN" secondAttribute="leading" id="L1Z-sL-2wT"/>
+                            <constraint firstItem="3tF-dx-tPC" firstAttribute="leading" secondItem="Ifv-ak-lOv" secondAttribute="leading" id="QWX-f9-HSl"/>
+                            <constraint firstAttribute="trailing" secondItem="3tF-dx-tPC" secondAttribute="trailing" id="ZCE-ml-r6U"/>
+                            <constraint firstItem="3tF-dx-tPC" firstAttribute="bottom" secondItem="Ifv-ak-lOv" secondAttribute="top" id="fEk-4T-GMo"/>
+                            <constraint firstItem="3tF-dx-tPC" firstAttribute="top" secondItem="jUw-th-2cW" secondAttribute="bottom" id="iGR-fL-dcr"/>
+                            <constraint firstItem="Ifv-ak-lOv" firstAttribute="bottom" secondItem="oss-Zn-cr6" secondAttribute="top" id="kuN-4w-euV"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="IKA-3M-jM4"/>
+                    <connections>
+                        <outlet property="movieTableView" destination="Ifv-ak-lOv" id="WTH-9E-gAb"/>
+                        <outlet property="searchBar" destination="3tF-dx-tPC" id="CKB-jR-pgc"/>
+                        <outlet property="searchDisplayController" destination="dDW-NH-75V" id="RR0-rg-Rly"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wnL-Yv-Pvv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="dDW-NH-75V">
+                    <connections>
+                        <outlet property="delegate" destination="t1U-0w-gAS" id="vde-Uk-mvN"/>
+                        <outlet property="searchContentsController" destination="t1U-0w-gAS" id="atN-b1-243"/>
+                        <outlet property="searchResultsDataSource" destination="t1U-0w-gAS" id="1J0-Un-GLv"/>
+                        <outlet property="searchResultsDelegate" destination="t1U-0w-gAS" id="0o5-Qw-Uqa"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="816" y="283"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0CC-gF-voX">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="52i-Fw-dId" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5gm-qV-iRM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="t1U-0w-gAS" kind="relationship" relationship="rootViewController" id="s0a-Ye-aNf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fJE-Gd-wBN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="419" y="283"/>
+        </scene>
+    </scenes>
+</document>

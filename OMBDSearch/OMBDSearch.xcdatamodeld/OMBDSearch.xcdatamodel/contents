@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15G31" minimumToolsVersion="Automatic">
     <entity name="Movies" representedClassName="Movies" syncable="YES">
+        <attribute name="imdbID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="movieActors" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="movieDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="movieDirector" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="movieImage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="moviePlot" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="movieRated" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="movieRating" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="movieRatingTomatoes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="movieRatingTomatoesCertificate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="movieReleased" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="movieRuntime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="movieTitle" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="movieYear" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="omdbID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="posterImage" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Movies" positionX="-63" positionY="-18" width="128" height="180"/>
+        <element name="Movies" positionX="-63" positionY="-18" width="128" height="240"/>
     </elements>
 </model>
