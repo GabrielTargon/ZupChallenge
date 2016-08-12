@@ -13,7 +13,7 @@
         <attribute name="movieRuntime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="movieTitle" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="movieYear" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="posterImage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="posterImage" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
     </entity>
     <elements>
         <element name="Movies" positionX="-63" positionY="-18" width="128" height="240"/>

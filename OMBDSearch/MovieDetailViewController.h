@@ -1,16 +1,15 @@
 //
-//  DetailViewController.h
+//  MovieDetailViewController.h
 //  OMBDSearch
 //
-//  Created by Gabriel Targon on 8/9/16.
+//  Created by Gabriel Targon on 8/12/16.
 //  Copyright © 2016 gabrieltargon. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "Movies.h"
-#import "MovieTableViewController.h"
 
-@interface DetailViewController : UIViewController
+@interface MovieDetailViewController : UIViewController
 
 @property (weak, nonatomic) Movies *movieSelected;
 
@@ -22,7 +21,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *movieDirectors;
 @property (weak, nonatomic) IBOutlet UILabel *movieActors;
 @property (weak, nonatomic) IBOutlet UILabel *movieDescription;
-
-- (IBAction)saveMovie:(id)sender;
 
 @end

@@ -10,12 +10,10 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 
 #import "Movie.h"
-//#import "Movies.h"
 #import "IMDbModel.h"
 #import "SearchTableViewCell.h"
 #import "DetailViewController.h"
 
-#import "SimplifiedMovieCell.h"
 
 @interface SearchTableViewController ()
 
@@ -177,21 +175,6 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-#pragma mark Core Data
-
-- (NSManagedObjectContext *)managedObjectContext {
-    NSManagedObjectContext *context = nil;
-    id delegate = [[UIApplication sharedApplication] delegate];
-    if ([delegate performSelector:@selector(managedObjectContext)]) {
-        context = [delegate managedObjectContext];
-    }
-    return context;
-}
-
-
-- (IBAction)cancel:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
 
 
 

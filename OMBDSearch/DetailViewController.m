@@ -11,6 +11,8 @@
 
 @interface DetailViewController ()
 
+@property (nonatomic, weak) NSMutableArray *movieAllSaved;
+
 @end
 
 @implementation DetailViewController
@@ -25,6 +27,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    MovieTableViewController *movieAll;
+    self.movieAllSaved = movieAll.moviesSaved;
+    NSLog(@"%@", self.movieAllSaved);
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,30 +40,17 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    // Unarchive movie data into object
-//    favoriteMovies = [@[] mutableCopy];
-    
     // Poster
     NSURL *posterURL = [NSURL URLWithString:self.movieSelected.posterImage];
     posterData = [[NSData alloc] initWithContentsOfURL:posterURL];
     
-//    // Create new movie object, passing in movie info at index
-//    Movies *moviesList = movies[indexPath.row];
-//    
-//    // Poster - use SDWebImage framework to download and load images asynchronously using provided URL's, set placeholder image
-//    NSURL *posterURL = [NSURL URLWithString:moviesList.posterImage];
-//    [searchMovieCell.movieImage sd_setImageWithURL:posterURL placeholderImage:[UIImage imageNamed:@"No_movie.png"]];
-//    
-//    // Title-Year
-//    searchMovieCell.movieTitle.text = [NSString stringWithFormat:@"%@ (%@)", moviesList.movieTitle, moviesList.movieYear];
-//    
-    
-    
+    NSLog(@"%@", self.movieSelected);
     // Use placeholder image if no image available
-    if ([self.movieSelected.posterImage isEqualToString:@"N/A"]) {
+    if ([self.movieSelected.posterImage isEqual:@"N/A"]) {
         self.movieImage.image = [UIImage imageNamed:@"No_movie.png"];
-        self.movieImage.backgroundColor = [UIColor colorWithRed:0.067f green:0.235f blue:0.333f alpha:1.0f];
+        self.movieImage.backgroundColor = [UIColor whiteColor];
     } else {
+//        [self.movieImage setImage:[UIImage imageWithData:[self.movieSelected valueForKey:@"posterImage"]]];
         self.movieImage.image = [UIImage imageWithData:posterData];
     }
     
@@ -82,26 +75,103 @@
 
 - (IBAction)saveMovie:(id)sender {
     NSManagedObjectContext *context = [self managedObjectContext];
-    NSManagedObject *movieSaved = [NSEntityDescription insertNewObjectForEntityForName:@"Movies" inManagedObjectContext:context];
-//    NSData *data=[NSKeyedArchiver archivedDataWithRootObject:_movieSelected];
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Movies" inManagedObjectContext:context];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDescription];
+    BOOL unique = YES;
+    NSError  *error;
+    NSArray *items = [self.managedObjectContext executeFetchRequest:request error:&error];
     
-    [movieSaved setValue:self.movieSelected.posterImage forKey:@"posterImage"];
-    [movieSaved setValue:self.movieSelected.movieTitle forKey:@"movieTitle"];
-    [movieSaved setValue:self.movieSelected.movieYear forKey:@"movieYear"];
-    [movieSaved setValue:self.movieSelected.movieRuntime forKey:@"movieRuntime"];
-    [movieSaved setValue:self.movieSelected.movieRating forKey:@"movieRating"];
-    [movieSaved setValue:self.movieSelected.movieDirector forKey:@"movieDirector"];
-    [movieSaved setValue:self.movieSelected.movieActors forKey:@"movieActors"];
-    [movieSaved setValue:self.movieSelected.moviePlot forKey:@"moviePlot"];
-    
-    NSError *error = nil;
-    if (![context save:&error]) {
-        NSLog(@"Save Failed! %@ %@", error, [error localizedDescription]);
+    //Check if item already exist on database
+    if(items.count > 0){
+        for(Movies *thisMovie in items){
+            if([self.movieSelected.movieTitle isEqualToString: thisMovie.movieTitle]){
+                unique = NO;
+            }
+        }
     }
+    if(unique){
+        
+        NSManagedObject *movieSaved = [NSEntityDescription insertNewObjectForEntityForName:@"Movies" inManagedObjectContext:context];
+        //Save image
+        NSData *dataImage = UIImagePNGRepresentation(self.movieImage.image);
+        [movieSaved setValue:dataImage forKey:@"posterImage"];
+        //Save info
+        [movieSaved setValue:self.movieSelected.movieTitle forKey:@"movieTitle"];
+        [movieSaved setValue:self.movieSelected.movieYear forKey:@"movieYear"];
+        [movieSaved setValue:self.movieSelected.movieRuntime forKey:@"movieRuntime"];
+        [movieSaved setValue:self.movieSelected.movieRating forKey:@"movieRating"];
+        [movieSaved setValue:self.movieSelected.movieDirector forKey:@"movieDirector"];
+        [movieSaved setValue:self.movieSelected.movieActors forKey:@"movieActors"];
+        [movieSaved setValue:self.movieSelected.moviePlot forKey:@"moviePlot"];
+
+        
+        NSError *error;
+        if (![self.managedObjectContext save:&error]) {
+            return;
+        }
+    }
+    
     else {
-        NSLog(@"AEWWWWWW SUCESSO");
+        UIAlertController * alert = [UIAlertController
+                                     alertControllerWithTitle:@"Already saved"
+                                     message:@"This movie is on your favorite movie list"
+                                     preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* okButton = [UIAlertAction
+                                   actionWithTitle:@"OK"
+                                   style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction * action) {
+                                       //Handle your yes please button action here
+                                   }];
+        
+        [alert addAction:okButton];
+        
+        [self presentViewController:alert animated:YES completion:nil];
     }
+    
+    
+    
+    
+    
+    
+    
 }
+
+
+//- (BOOL)isMovieSavedBefore:(NSString *)title
+//{
+//    for (NSManagedObject *movies in self.movieAllSaved)
+//    {
+//        Movies *movie = [myFetchRequest setPredicate:[NSPredicate predicateWithFormat:@"timestamp in %@", myArrayOfIncomingTimestamps]];
+//        if ([[movie valueForKey:@"movieTitle"] isEqualToString:title])
+//        {
+//            UIAlertController * alert = [UIAlertController
+//                                         alertControllerWithTitle:@"Title"
+//                                         message:@"Message"
+//                                         preferredStyle:UIAlertControllerStyleAlert];
+//            
+//            UIAlertAction* okButton = [UIAlertAction
+//                                        actionWithTitle:@"OK"
+//                                        style:UIAlertActionStyleDefault
+//                                        handler:^(UIAlertAction * action) {
+//                                            //Handle your yes please button action here
+//                                        }];
+//            
+//            [alert addAction:okButton];
+//            
+//            [self presentViewController:alert animated:YES completion:nil];
+//            return YES;
+//        }
+//    }
+//    return NO;
+//}
+
+
+
+
+
+
 
 /*
  #pragma mark - Navigation

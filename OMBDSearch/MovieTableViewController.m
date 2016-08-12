@@ -8,14 +8,11 @@
 
 #import "MovieTableViewController.h"
 #import "MovieTableViewCell.h"
-
-#import "Movies.h"
+#import "MovieDetailViewController.h"
 
 @interface MovieTableViewController ()
 
-
-@property (strong) NSMutableArray *moviesSaved;
-@property (strong) Movies *movies;
+@property (strong, nonatomic) NSMutableArray *moviesArray;
 
 @end
 
@@ -23,6 +20,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.moviesArray = [@[] mutableCopy];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -44,8 +43,8 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (self.moviesSaved) {
-        return self.moviesSaved.count;
+    if (self.moviesArray) {
+        return self.moviesArray.count;
     } else {
         return 0;
     }
@@ -53,17 +52,19 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MovieTableViewCell *movieCell = (MovieTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    // Create new movie object, passing in movie info at index
-    self->moviesList = movies[indexPath.row];
+    NSManagedObject *movie = [self.moviesArray objectAtIndex:indexPath.row];
     
-    // Poster - use SDWebImage framework to download and load images asynchronously using provided URL's, set placeholder image
-    NSURL *posterURL = [NSURL URLWithString:moviesList.posterImage];
-    [movieCell.movieImage sd_setImageWithURL:posterURL placeholderImage:[UIImage imageNamed:@"No_movie.png"]];
+    //Set image
+    if (![movie valueForKey:@"posterImage"]) {
+        [movieCell.movieImage setImage: [UIImage imageNamed:@"No_movie.png"]];
+        movieCell.movieImage.backgroundColor = [UIColor whiteColor];
+    } else {
+        [movieCell.movieImage setImage:[UIImage imageWithData:[movie valueForKey:@"posterImage"]]];
+    }
+    //Set title
+    [movieCell.movieTitle setText:[NSString stringWithFormat:@"%@ (%@)", [movie valueForKey:@"movieTitle"], [movie valueForKey:@"movieYear"]]];
     
-    // Title-Year
-    movieCell.movieTitle.text = [NSString stringWithFormat:@"%@ (%@)", moviesList.movieTitle, moviesList.movieYear];
-    
-    return searchMovieCell;
+    return movieCell;
 }
 
 
@@ -80,15 +81,19 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    if (self.movies == nil) {
-        
-    } else {
-        // Fetch the movies from persistent data store
-        NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
-        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Movies"];
-        self.moviesSaved = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
-        NSLog(@"%@", self.moviesSaved);
-        [self.tableView reloadData];
+    
+    // Fetch the movies from persistent data store
+    NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Movies"];
+    self.moviesArray = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
+    [self.tableView reloadData];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"showDetailTwo"]) {
+        MovieDetailViewController *destination = [segue destinationViewController];
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        destination.movieSelected = [self.moviesArray objectAtIndex:indexPath.row];
     }
 }
 

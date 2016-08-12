@@ -8,8 +8,6 @@
 
 #import "IMDbModel.h"
 #import "Movie.h"
-//#import "Movies.h"
-#import "MovieSearchVC.h"
 
 @implementation IMDbModel
 {
@@ -123,29 +121,6 @@
     if (error != nil) {
         NSLog(@"Error: %@", error.description);
     }
-//    NSManagedObjectModel *managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];
-//    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Challenges" inManagedObjectContext:managedObjectModel];
-//    Movies *movie = [[Movies alloc] initWithEntity:entity insertIntoManagedObjectContext:managedObjectModel];
-//    
-//    NSMutableData *data = [[NSMutableData alloc] init];
-//    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
-//    [archiver encodeObject:movieDictionary forKey:@"dictpropertyinmanagedobject"];
-//    [archiver finishEncoding];
-////    [archiver release];
-//    [movie.posterImage setValue:movieDictionary forKey:@"Poster"];
-//    [movie.movieTitle setValue:movieDictionary forKey:@"Title"];
-//    [movie.movieYear setValue:movieDictionary forKey:@"Year"];
-//    [movie.movieRuntime setValue:movieDictionary forKey:@"Runtime"];
-//    [movie.movieRating setValue:movieDictionary forKey:@"imdbRating"];
-//    [movie.movieDirector setValue:movieDictionary forKey:@"Director"];
-//    [movie.movieActors setValue:movieDictionary forKey:@"Actors"];
-//    [movie.movieReleased setValue:movieDictionary forKey:@"Released"];
-//    [movie.moviePlot setValue:movieDictionary forKey:@"Plot"];
-//    [movie.movieRatingTomatoes setValue:movieDictionary forKey:@"tomatoMeter"];
-//    [movie.movieRatingTomatoesCertificate setValue:movieDictionary forKey:@"tomatoImage"];
-//    [movie.movieRated setValue:movieDictionary forKey:@"Rated"];
-//    [movie.imdbID setValue:movieDictionary forKey:@"imdbID"];
-    
     // Pass dictionary data into new Movie object
     Movie *movie = [[Movie alloc] init];
     movie.posterImage = movieDictionary[@"Poster"];

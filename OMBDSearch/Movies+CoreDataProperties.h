@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *movieDirector;
 @property (nullable, nonatomic, retain) NSString *movieActors;
 @property (nullable, nonatomic, retain) NSString *moviePlot;
-@property (nullable, nonatomic, retain) NSString *posterImage;
+@property (nullable, nonatomic, retain) NSData *posterImage;
 @property (nullable, nonatomic, retain) NSString *movieReleased;
 @property (nullable, nonatomic, retain) NSString *movieRatingTomatoes;
 @property (nullable, nonatomic, retain) NSString *movieRatingTomatoesCertificate;
