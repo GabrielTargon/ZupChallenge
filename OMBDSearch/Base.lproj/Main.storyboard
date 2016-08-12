@@ -14,11 +14,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="100" id="S5m-AD-Jyz" customClass="MovieTableViewCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" rowHeight="100" id="S5m-AD-Jyz" customClass="MovieTableViewCell">
                                 <rect key="frame" x="0.0" y="92" width="600" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="S5m-AD-Jyz" id="iZe-GY-aAk">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Id-OR-nhS">
@@ -26,7 +26,7 @@
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FVH-tg-x1z">
                                             <rect key="frame" x="86" y="39" width="506" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -56,10 +56,10 @@
             </objects>
             <point key="canvasLocation" x="1117" y="1115"/>
         </scene>
-        <!--Detail View Controller-->
+        <!--Search Detail View Controller-->
         <scene sceneID="m9D-xy-GfW">
             <objects>
-                <viewController id="sWl-Wq-Xfv" customClass="DetailViewController" sceneMemberID="viewController">
+                <viewController id="sWl-Wq-Xfv" customClass="SearchDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KcN-TW-0cK"/>
                         <viewControllerLayoutGuide type="bottom" id="unu-5O-4Zy"/>
@@ -204,7 +204,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Search" id="jVH-9J-WKH">
-                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="UNl-Xm-eUz">
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="UNl-Xm-eUz">
                             <connections>
                                 <action selector="cancelSearch:" destination="QNu-cx-5db" id="w7c-xH-zMo"/>
                             </connections>

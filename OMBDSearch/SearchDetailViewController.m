@@ -1,26 +1,25 @@
 //
-//  DetailViewController.m
+//  SearchDetailViewController.m
 //  OMBDSearch
 //
 //  Created by Gabriel Targon on 8/9/16.
 //  Copyright © 2016 gabrieltargon. All rights reserved.
 //
 
-#import "DetailViewController.h"
+#import "SearchDetailViewController.h"
 #import "Movie.h"
 
-@interface DetailViewController ()
+@interface SearchDetailViewController ()
 
 @property (nonatomic, weak) NSMutableArray *movieAllSaved;
 
 @end
 
-@implementation DetailViewController
+@implementation SearchDetailViewController
 {
     NSData *posterData;
     NSMutableArray *favoriteMovies;
     NSUserDefaults * defaults;
-    
     UIBarButtonItem *favoriteButton;
 }
 

@@ -12,10 +12,12 @@
 #import "Movie.h"
 #import "IMDbModel.h"
 #import "SearchTableViewCell.h"
-#import "DetailViewController.h"
+#import "SearchDetailViewController.h"
 
 
 @interface SearchTableViewController ()
+
+@property (weak, nonatomic) Movie *moviesList;
 
 @end
 
@@ -23,7 +25,6 @@
 {
     // Model
     IMDbModel *imdbModel;
-    Movie *moviesList;
     NSMutableArray *movies;
     
     // View
@@ -32,7 +33,7 @@
     NSTimer *timer;
     
     // Controller
-    DetailViewController *movieDetailController;
+    SearchDetailViewController *movieDetailController;
 }
 
 - (void)viewDidLoad {
@@ -76,14 +77,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     SearchTableViewCell *searchMovieCell = (SearchTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"Cell"];
     // Create new movie object, passing in movie info at index
-    self->moviesList = movies[indexPath.row];
+    self.moviesList = movies[indexPath.row];
     
     // Poster - use SDWebImage framework to download and load images asynchronously using provided URL's, set placeholder image
-    NSURL *posterURL = [NSURL URLWithString:moviesList.posterImage];
+    NSURL *posterURL = [NSURL URLWithString:self.moviesList.posterImage];
     [searchMovieCell.movieImage sd_setImageWithURL:posterURL placeholderImage:[UIImage imageNamed:@"No_movie.png"]];
     
     // Title-Year
-    searchMovieCell.movieTitle.text = [NSString stringWithFormat:@"%@ (%@)", moviesList.movieTitle, moviesList.movieYear];
+    searchMovieCell.movieTitle.text = [NSString stringWithFormat:@"%@ (%@)", self.moviesList.movieTitle, self.moviesList.movieYear];
     
     return searchMovieCell;
 }
@@ -102,7 +103,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
-        DetailViewController *destination = [segue destinationViewController];
+        SearchDetailViewController *destination = [segue destinationViewController];
         
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         destination.movieSelected = [movies objectAtIndex:indexPath.row];

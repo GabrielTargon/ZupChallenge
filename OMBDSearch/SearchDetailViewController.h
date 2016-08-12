@@ -1,5 +1,5 @@
 //
-//  DetailViewController.h
+//  SearchDetailViewController.h
 //  OMBDSearch
 //
 //  Created by Gabriel Targon on 8/9/16.
@@ -10,7 +10,7 @@
 #import "Movies.h"
 #import "MovieTableViewController.h"
 
-@interface DetailViewController : UIViewController
+@interface SearchDetailViewController : UIViewController
 
 @property (weak, nonatomic) Movies *movieSelected;
 
