@@ -59,6 +59,8 @@
     } else {
         [movieCell.movieImage setImage:[UIImage imageWithData:[movie valueForKey:@"posterImage"]]];
     }
+    movieCell.movieImage.layer.cornerRadius = 5.0;
+    movieCell.movieImage.layer.masksToBounds = YES;
     //Set title
     [movieCell.movieTitle setText:[NSString stringWithFormat:@"%@ (%@)", [movie valueForKey:@"movieTitle"], [movie valueForKey:@"movieYear"]]];
     

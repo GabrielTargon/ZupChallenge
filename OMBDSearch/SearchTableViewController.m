@@ -81,7 +81,8 @@
     // Use SDWebImage framework to download and load images
     NSURL *posterURL = [NSURL URLWithString:self.moviesList.posterImage];
     [searchMovieCell.movieImage sd_setImageWithURL:posterURL placeholderImage:[UIImage imageNamed:@"No_movie.png"]];
-    
+    searchMovieCell.movieImage.layer.cornerRadius = 5.0;
+    searchMovieCell.movieImage.layer.masksToBounds = YES;
     // Get title and year
     searchMovieCell.movieTitle.text = [NSString stringWithFormat:@"%@ (%@)", self.moviesList.movieTitle, self.moviesList.movieYear];
     
