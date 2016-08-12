@@ -9,6 +9,12 @@
 #import "IMDbModel.h"
 #import "Movie.h"
 
+@interface IMDbModel ()
+
+//@property (weak, nonatomic) NSMutableArray *moviesArray;
+
+@end
+
 @implementation IMDbModel
 {
     NSMutableArray *movieIDArray;

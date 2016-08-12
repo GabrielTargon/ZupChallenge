@@ -16,9 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
-    NSLog(@"%@", self.movieSelected);
     // Use placeholder image if no image available
     if ([self.movieSelected.posterImage isEqual:@"N/A"]) {
         self.movieImage.image = [UIImage imageNamed:@"No_movie.png"];
@@ -26,8 +24,7 @@
     } else {
         [self.movieImage setImage:[UIImage imageWithData:[self.movieSelected valueForKey:@"posterImage"]]];
     }
-    
-    //Information
+    //Display information
     self.movieTitle.text = self.movieSelected.movieTitle;
     self.movieReleased.text = [NSString stringWithFormat:@"Released: %@", self.movieSelected.movieYear];
     self.movieRuntime.text = [NSString stringWithFormat:@"Runtime: %@", self.movieSelected.movieRuntime];
@@ -43,6 +40,7 @@
 }
 
 - (IBAction)removeMovie:(id)sender {
+    //Delete movie from core data
     NSManagedObject *aManagedObject = self.movieSelected;
     NSManagedObjectContext *context = [aManagedObject managedObjectContext];
     [context deleteObject:aManagedObject];
@@ -53,15 +51,5 @@
     }
 }
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

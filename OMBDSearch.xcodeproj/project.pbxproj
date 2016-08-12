@@ -188,13 +188,13 @@
 			isa = PBXGroup;
 			children = (
 				B54874391D59ABC2007FB1E9 /* Model */,
-				B569F0BF1D59A17000F1DF2D /* AppDelegate.h */,
-				B569F0C01D59A17000F1DF2D /* AppDelegate.m */,
 				B54874941D5D9DE1007FB1E9 /* View Controllers */,
 				B54874931D5D9DD8007FB1E9 /* Cells */,
+				B569F0BF1D59A17000F1DF2D /* AppDelegate.h */,
+				B569F0C01D59A17000F1DF2D /* AppDelegate.m */,
 				B569F0C51D59A17000F1DF2D /* Main.storyboard */,
-				B569F0CB1D59A17000F1DF2D /* Assets.xcassets */,
 				B569F0CD1D59A17000F1DF2D /* LaunchScreen.storyboard */,
+				B569F0CB1D59A17000F1DF2D /* Assets.xcassets */,
 				B569F0D01D59A17000F1DF2D /* Info.plist */,
 				B569F0BC1D59A17000F1DF2D /* Supporting Files */,
 			);

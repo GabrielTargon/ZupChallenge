@@ -11,30 +11,16 @@
 
 @interface SearchDetailViewController ()
 
-@property (nonatomic, weak) NSMutableArray *movieAllSaved;
-
 @end
 
 @implementation SearchDetailViewController
 {
     NSData *posterData;
-    NSMutableArray *favoriteMovies;
-    NSUserDefaults * defaults;
-    UIBarButtonItem *favoriteButton;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    MovieTableViewController *movieAll;
-    self.movieAllSaved = movieAll.moviesSaved;
-    NSLog(@"%@", self.movieAllSaved);
-    
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -43,13 +29,11 @@
     NSURL *posterURL = [NSURL URLWithString:self.movieSelected.posterImage];
     posterData = [[NSData alloc] initWithContentsOfURL:posterURL];
     
-    NSLog(@"%@", self.movieSelected);
     // Use placeholder image if no image available
     if ([self.movieSelected.posterImage isEqual:@"N/A"]) {
         self.movieImage.image = [UIImage imageNamed:@"No_movie.png"];
         self.movieImage.backgroundColor = [UIColor whiteColor];
     } else {
-//        [self.movieImage setImage:[UIImage imageWithData:[self.movieSelected valueForKey:@"posterImage"]]];
         self.movieImage.image = [UIImage imageWithData:posterData];
     }
     
@@ -62,6 +46,8 @@
     self.movieActors.text = self.movieSelected.movieActors;
     self.movieDescription.text = self.movieSelected.moviePlot;
 }
+
+#pragma mark Core Data methods
 
 - (NSManagedObjectContext *)managedObjectContext {
     NSManagedObjectContext *context = nil;
@@ -89,8 +75,8 @@
             }
         }
     }
-    if(unique){
-        
+    
+    if(unique) {
         NSManagedObject *movieSaved = [NSEntityDescription insertNewObjectForEntityForName:@"Movies" inManagedObjectContext:context];
         //Save image
         NSData *dataImage = UIImagePNGRepresentation(self.movieImage.image);
@@ -103,83 +89,39 @@
         [movieSaved setValue:self.movieSelected.movieDirector forKey:@"movieDirector"];
         [movieSaved setValue:self.movieSelected.movieActors forKey:@"movieActors"];
         [movieSaved setValue:self.movieSelected.moviePlot forKey:@"moviePlot"];
-
-        
+        self.navigationItem.rightBarButtonItem.enabled = NO;
         NSError *error;
         if (![self.managedObjectContext save:&error]) {
             return;
         }
+    }else {
+        [self alertAlreadySaved];
     }
-    
-    else {
-        UIAlertController * alert = [UIAlertController
-                                     alertControllerWithTitle:@"Already saved"
-                                     message:@"This movie is on your favorite movie list"
-                                     preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction* okButton = [UIAlertAction
-                                   actionWithTitle:@"OK"
-                                   style:UIAlertActionStyleDefault
-                                   handler:^(UIAlertAction * action) {
-                                       //Handle your yes please button action here
-                                   }];
-        
-        [alert addAction:okButton];
-        
-        [self presentViewController:alert animated:YES completion:nil];
-    }
-    
-    
-    
-    
-    
-    
-    
 }
 
+#pragma mark Other methods
 
-//- (BOOL)isMovieSavedBefore:(NSString *)title
-//{
-//    for (NSManagedObject *movies in self.movieAllSaved)
-//    {
-//        Movies *movie = [myFetchRequest setPredicate:[NSPredicate predicateWithFormat:@"timestamp in %@", myArrayOfIncomingTimestamps]];
-//        if ([[movie valueForKey:@"movieTitle"] isEqualToString:title])
-//        {
-//            UIAlertController * alert = [UIAlertController
-//                                         alertControllerWithTitle:@"Title"
-//                                         message:@"Message"
-//                                         preferredStyle:UIAlertControllerStyleAlert];
-//            
-//            UIAlertAction* okButton = [UIAlertAction
-//                                        actionWithTitle:@"OK"
-//                                        style:UIAlertActionStyleDefault
-//                                        handler:^(UIAlertAction * action) {
-//                                            //Handle your yes please button action here
-//                                        }];
-//            
-//            [alert addAction:okButton];
-//            
-//            [self presentViewController:alert animated:YES completion:nil];
-//            return YES;
-//        }
-//    }
-//    return NO;
-//}
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
-
-
-
-
-
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+- (void) alertAlreadySaved {
+    UIAlertController * alert = [UIAlertController
+                                 alertControllerWithTitle:@"Already saved"
+                                 message:@"This movie is on your favorite movie list"
+                                 preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* okButton = [UIAlertAction
+                               actionWithTitle:@"OK"
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction * action) {
+                                   //Handle your yes please button action here
+                               }];
+    
+    [alert addAction:okButton];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
 
 @end

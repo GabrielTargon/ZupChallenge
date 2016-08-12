@@ -47,12 +47,11 @@
     movies = [@[] mutableCopy];
     
     // Spinner
-    spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     spinner.center = self.view.center;
+    spinner.tag = 12;
     [self.view addSubview:spinner];
-    
 }
-
 
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -79,11 +78,11 @@
     // Create new movie object, passing in movie info at index
     self.moviesList = movies[indexPath.row];
     
-    // Poster - use SDWebImage framework to download and load images asynchronously using provided URL's, set placeholder image
+    // Use SDWebImage framework to download and load images
     NSURL *posterURL = [NSURL URLWithString:self.moviesList.posterImage];
     [searchMovieCell.movieImage sd_setImageWithURL:posterURL placeholderImage:[UIImage imageNamed:@"No_movie.png"]];
     
-    // Title-Year
+    // Get title and year
     searchMovieCell.movieTitle.text = [NSString stringWithFormat:@"%@ (%@)", self.moviesList.movieTitle, self.moviesList.movieYear];
     
     return searchMovieCell;
@@ -165,7 +164,7 @@
     movies = moviesArray;
 }
 
-#pragma mark Other
+#pragma mark Other methods
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -176,69 +175,5 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-
-
-
-//- (IBAction)save:(id)sender {
-//    NSManagedObjectContext *context = [self managedObjectContext];
-//    
-//    // Create a new managed object
-//    NSManagedObject *newDevice = [NSEntityDescription insertNewObjectForEntityForName:@"Device" inManagedObjectContext:context];
-//    [newDevice setValue:self.nameTextField.text forKey:@"name"];
-//    [newDevice setValue:self.versionTextField.text forKey:@"version"];
-//    [newDevice setValue:self.companyTextField.text forKey:@"company"];
-//    
-//    NSError *error = nil;
-//    // Save the object to persistent store
-//    if (![context save:&error]) {
-//        NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
-//    }
-//    
-//    [self dismissViewControllerAnimated:YES completion:nil];
-//}
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

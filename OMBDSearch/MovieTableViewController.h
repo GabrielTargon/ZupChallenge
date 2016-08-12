@@ -11,6 +11,4 @@
 
 @interface MovieTableViewController : UITableViewController
 
-@property (strong, nonatomic) Movies *moviesSaved;
-
 @end
