@@ -5,6 +5,7 @@
 
 target 'OMBDSearch' do
 pod 'SDWebImage', '~>3.8'
+pod 'ParallaxBlur', '~> 0.1'
 end
 
 target 'OMBDSearchTests' do

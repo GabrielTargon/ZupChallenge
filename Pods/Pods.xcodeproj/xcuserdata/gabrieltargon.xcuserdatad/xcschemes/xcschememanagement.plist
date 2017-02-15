@@ -4,7 +4,27 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>FXBlurView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>ParallaxBlur.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-OMBDSearch.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-OMBDSearchTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-OMBDSearchUITests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -17,12 +37,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>416BC08645A26A29A0B934D479C001DD</key>
+		<key>15795ADFF72ADFE7A2EEF1EED9206D91</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5786D3E90FE90A790A5DC6FC0D492F3D</key>
+		<key>228EB0B46E20470DF694DB65B17CE305</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3791205DD8D743927997ADD657B1D6EF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>683F139EAF41B416865DA8AFC38F6E7E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6F8F214DEA43FC11DFA3FBA509A6F050</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E271A6291D5776FCC4813F8700CF87C4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -7,27 +7,18 @@
 //
 
 #import "DetailViewController.h"
-#import "MovieDescriptionTableViewCell.m"
 
 @interface DetailViewController () {
+    UITextView *textView;
 }
 
 @end
 
 @implementation DetailViewController
 
-- (void)viewWillAppear:(BOOL)animated {
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
-
-    self.navigationController.interactivePopGestureRecognizer.delegate = nil;
-
-    [super viewWillAppear:animated];
-}
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setupNavbarButtons];
+    [self.view setBackgroundColor:[UIColor whiteColor]];
     
     // Use placeholder image if no image available
     if ([self.movieSelected.posterImage isEqual:@"N/A"]) {
@@ -35,10 +26,18 @@
     } else {
         [self setHeaderImage:[UIImage imageWithData:[self.movieSelected valueForKey:@"posterImage"]]];
     }
+    
     //Display information
     [self setTitleText:self.movieSelected.movieTitle];
     [self setSubtitleText:self.movieSelected.movieYear];
     [self setLabelBackgroundGradientColor:[UIColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:0.7f]];
+    
+    //Navigation item - Delete
+    UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc]
+                                     initWithBarButtonSystemItem:UIBarButtonSystemItemTrash
+                                     target:self
+                                     action:@selector(removeMovie)];
+    self.navigationItem.rightBarButtonItem = deleteButton;
     
 }
 
@@ -46,67 +45,35 @@
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
-- (void)setupNavbarButtons
-{
-    UIButton *buttonBack = [UIButton buttonWithType:UIButtonTypeCustom];
+- (UIScrollView*)contentView{
+    textView = [[UITextView alloc] initWithFrame:CGRectZero];
+    textView.scrollEnabled = NO;
+    textView.editable = NO;
+    [textView setBackgroundColor:[UIColor blackColor]];
+    [textView setTextColor:[UIColor whiteColor]];
+    [textView setFont:[UIFont fontWithName:@"Helvetica-Bold" size:20.0]];
+    textView.text = [NSString stringWithFormat:@"Runtime: %@\n\nRate: %@\n\nDirect by:\n%@ \n\nActors:\n%@ \n\nDescription:\n%@", self.movieSelected.movieRuntime, self.movieSelected.movieRating, self.movieSelected.movieDirector, self.movieSelected.movieActors, self.movieSelected.moviePlot];
+    textView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), 1000);
     
-    buttonBack.frame = CGRectMake(10, 10, 22, 22);
-    [buttonBack setImage:[UIImage imageNamed:@"back_icon"] forState:UIControlStateNormal];
-    [buttonBack addTarget:self action:@selector(popViewController:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:buttonBack];
+    return textView;
 }
 
-- (IBAction)popViewController:(id)sender
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-//- (UIScrollView*)contentView{
-//    textMovieRuntime = [[UITextView alloc] initWithFrame:CGRectZero];
-//    textMovieRuntime.scrollEnabled = NO;
-//    textMovieRuntime.editable = NO;
-//    textMovieRuntime.text = self.movieSelected.movieRuntime;
-//    textMovieRuntime.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), 100);
-    
-    
-//    textMoviePlot = [[UITextView alloc] initWithFrame:CGRectZero];
-//    textMoviePlot.scrollEnabled = NO;
-//    textMoviePlot.editable = NO;
-//    textMoviePlot.text = self.movieSelected.moviePlot;
-//    textMoviePlot.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), 600);
-    
-//    return _tableViewMovie;
-    
-    //    self.movieRuntime.text = [NSString stringWithFormat:@"Runtime: %@", self.movieSelected.movieRuntime];
-    //    self.movieRate.text = [NSString stringWithFormat:@"Rate: %@", self.movieSelected.movieRating];
-    //    self.movieDirectors.text = self.movieSelected.movieDirector;
-    //    self.movieActors.text = self.movieSelected.movieActors;
-    //    self.movieDescription.text = self.movieSelected.moviePlot;
-//}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    MovieDescriptionTableViewCell *detailMovieCell = (MovieDescriptionTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"CellDetail"];
-    detailMovieCell.labelMovieRuntime.text = self.movieSelected.movieRuntime;
-    
-    return detailMovieCell;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
-}
-
-
-- (IBAction)backButton:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)removeMovie {
+    //Delete movie from core data
+    NSManagedObject *aManagedObject = self.movieSelected;
+    NSManagedObjectContext *context = [aManagedObject managedObjectContext];
+    [context deleteObject:aManagedObject];
+    NSError *error;
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    if (![context save:&error]) {
+        NSLog(@"Couldn't delete");
+    }
 }
 
 /*

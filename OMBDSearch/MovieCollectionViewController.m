@@ -2,35 +2,42 @@
 //  MovieCollectionViewController.m
 //  OMBDSearch
 //
-//  Created by Gabriel Targon on 2/10/17.
+//  Created by Gabriel Targon on 2/6/17.
 //  Copyright © 2017 gabrieltargon. All rights reserved.
 //
 
 #import "MovieCollectionViewController.h"
+#import "MovieCollectionViewCell.h"
+#import "DetailViewController.h"
 
 @interface MovieCollectionViewController ()
+
+@property (strong, nonatomic) NSMutableArray *moviesArray;
 
 @end
 
 @implementation MovieCollectionViewController
 
-static NSString * const reuseIdentifier = @"Cell";
+static NSString * const reuseIdentifier = @"CellCollection";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.moviesArray = [@[] mutableCopy];
     
     // Uncomment the following line to preserve selection between presentations
     // self.clearsSelectionOnViewWillAppear = NO;
     
-    // Register cell classes
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
-    
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    // Fetch the movies from persistent data store
+    NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Movies"];
+    self.moviesArray = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
+    [self.collectionView reloadData];
 }
 
 /*
@@ -47,21 +54,69 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
 #warning Incomplete implementation, return the number of sections
-    return 0;
+    return 1;
 }
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
 #warning Incomplete implementation, return the number of items
-    return 0;
+    if (self.moviesArray) {
+        return self.moviesArray.count;
+    } else {
+        return 0;
+    }
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
-    // Configure the cell
+    MovieCollectionViewCell *movieCell = (MovieCollectionViewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    NSManagedObject *movie = [self.moviesArray objectAtIndex:indexPath.row];
+//    UIImageView *recipeImageView = (UIImageView *)[cell viewWithTag:100];
+    //Set imagerr
+    if (![movie valueForKey:@"posterImage"]) {
+        [movieCell.movieImage setImage: [UIImage imageNamed:@"No_movie.png"]];
+        movieCell.movieImage.backgroundColor = [UIColor whiteColor];
+    } else {
+        [movieCell.movieImage setImage:[UIImage imageWithData:[movie valueForKey:@"posterImage"]]];
+    }
+//    movieCell.movieImage.layer.cornerRadius = 5.0;
+    movieCell.movieImage.layer.masksToBounds = YES;
+    //Set title
+    [movieCell.movieTitle setText:[NSString stringWithFormat:@"%@ (%@)", [movie valueForKey:@"movieTitle"], [movie valueForKey:@"movieYear"]]];
     
-    return cell;
+    return movieCell;
+    
+//    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+//    
+//    // Configure the cell
+//    
+//    return cell;
+}
+
+
+#pragma mark Other methods
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (NSManagedObjectContext *)managedObjectContext
+{
+    NSManagedObjectContext *context = nil;
+    id delegate = [[UIApplication sharedApplication] delegate];
+    if ([delegate performSelector:@selector(managedObjectContext)]) {
+        context = [delegate managedObjectContext];
+    }
+    return context;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"showDetailTwo"]) {
+        DetailViewController *destination = [segue destinationViewController];
+        NSIndexPath *indexPath = [[self.collectionView indexPathsForSelectedItems] lastObject];
+        destination.movieSelected = [self.moviesArray objectAtIndex:indexPath.row];
+    }
 }
 
 #pragma mark <UICollectionViewDelegate>

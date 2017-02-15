@@ -2,8 +2,8 @@
 //  SearchTableViewController.m
 //  OMBDSearch
 //
-//  Created by Gabriel Targon on 8/9/16.
-//  Copyright © 2016 gabrieltargon. All rights reserved.
+//  Created by Gabriel Targon on 2/7/17.
+//  Copyright © 2017 gabrieltargon. All rights reserved.
 //
 
 #import "SearchTableViewController.h"

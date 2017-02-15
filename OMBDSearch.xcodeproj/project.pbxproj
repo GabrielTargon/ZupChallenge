@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3EA39B64332EAE066EE1EB3D /* libPods-OMBDSearch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EADF4B7C7E46F330CF8A04B /* libPods-OMBDSearch.a */; };
-		B548742E1D59A7BD007FB1E9 /* MovieTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B548742D1D59A7BD007FB1E9 /* MovieTableViewController.m */; };
+		627206961F4F48A2C603C298 /* libPods-OMBDSearch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AB983EDFF8B1C81C409C8D4 /* libPods-OMBDSearch.a */; };
+		9A734AF14FC8ADEB01AE5CC7 /* libPods-OMBDSearchUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 534990C6A34D6C4A51ABB2A7 /* libPods-OMBDSearchUITests.a */; };
+		9E598CE454CAF8916BEA213A /* libPods-OMBDSearchTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5812EF00DB53472D1A87FAA3 /* libPods-OMBDSearchTests.a */; };
+		B50A2A5E1E4E204000B3B496 /* MovieCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B50A2A5D1E4E203F00B3B496 /* MovieCollectionViewController.m */; };
+		B50A2A611E4E331A00B3B496 /* MovieCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B50A2A601E4E331A00B3B496 /* MovieCollectionViewCell.m */; };
 		B54874311D59A94F007FB1E9 /* SearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B54874301D59A94F007FB1E9 /* SearchTableViewController.m */; };
 		B54874371D59ABAB007FB1E9 /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = B54874351D59ABAB007FB1E9 /* Movie.m */; };
 		B548743C1D5A5E09007FB1E9 /* SearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B548743B1D5A5E09007FB1E9 /* SearchTableViewCell.m */; };
@@ -17,7 +20,6 @@
 		B54874881D5C538D007FB1E9 /* MovieTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B54874871D5C538D007FB1E9 /* MovieTableViewCell.m */; };
 		B548748D1D5C6BF1007FB1E9 /* Movies+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B548748A1D5C6BF1007FB1E9 /* Movies+CoreDataProperties.m */; };
 		B548748E1D5C6BF1007FB1E9 /* Movies.m in Sources */ = {isa = PBXBuildFile; fileRef = B548748C1D5C6BF1007FB1E9 /* Movies.m */; };
-		B54874921D5D7466007FB1E9 /* MovieDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B54874911D5D7466007FB1E9 /* MovieDetailViewController.m */; };
 		B569F0BE1D59A17000F1DF2D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B569F0BD1D59A17000F1DF2D /* main.m */; };
 		B569F0C11D59A17000F1DF2D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B569F0C01D59A17000F1DF2D /* AppDelegate.m */; };
 		B569F0C71D59A17000F1DF2D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B569F0C51D59A17000F1DF2D /* Main.storyboard */; };
@@ -26,6 +28,7 @@
 		B569F0CF1D59A17000F1DF2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B569F0CD1D59A17000F1DF2D /* LaunchScreen.storyboard */; };
 		B569F0DA1D59A17000F1DF2D /* OMBDSearchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B569F0D91D59A17000F1DF2D /* OMBDSearchTests.m */; };
 		B569F0E51D59A17000F1DF2D /* OMBDSearchUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B569F0E41D59A17000F1DF2D /* OMBDSearchUITests.m */; };
+		B5E201B81E53B2C9006D8F8A /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E201B71E53B2C9006D8F8A /* DetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,11 +49,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0EADF4B7C7E46F330CF8A04B /* libPods-OMBDSearch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OMBDSearch.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D7F9217E79356EAC0AA6071 /* Pods-OMBDSearch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OMBDSearch.release.xcconfig"; path = "Pods/Target Support Files/Pods-OMBDSearch/Pods-OMBDSearch.release.xcconfig"; sourceTree = "<group>"; };
-		451ACF6BBF07999CCF5E4670 /* Pods-OMBDSearch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OMBDSearch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OMBDSearch/Pods-OMBDSearch.debug.xcconfig"; sourceTree = "<group>"; };
-		B548742C1D59A7BD007FB1E9 /* MovieTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieTableViewController.h; sourceTree = "<group>"; };
-		B548742D1D59A7BD007FB1E9 /* MovieTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieTableViewController.m; sourceTree = "<group>"; };
+		0D13D6706110C1456A51F03C /* Pods-OMBDSearch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OMBDSearch.release.xcconfig"; path = "Pods/Target Support Files/Pods-OMBDSearch/Pods-OMBDSearch.release.xcconfig"; sourceTree = "<group>"; };
+		0DBD735D576AEA916C45A459 /* Pods-OMBDSearchTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OMBDSearchTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OMBDSearchTests/Pods-OMBDSearchTests.debug.xcconfig"; sourceTree = "<group>"; };
+		29D190CDA9128C1C4708DCAA /* Pods-OMBDSearchTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OMBDSearchTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OMBDSearchTests/Pods-OMBDSearchTests.release.xcconfig"; sourceTree = "<group>"; };
+		2C69424E839D13B6B1CDB7A3 /* Pods-OMBDSearchUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OMBDSearchUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OMBDSearchUITests/Pods-OMBDSearchUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		33A46DEC7E5E1CC39AEDC042 /* Pods-OMBDSearch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OMBDSearch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OMBDSearch/Pods-OMBDSearch.debug.xcconfig"; sourceTree = "<group>"; };
+		534990C6A34D6C4A51ABB2A7 /* libPods-OMBDSearchUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OMBDSearchUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5812EF00DB53472D1A87FAA3 /* libPods-OMBDSearchTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OMBDSearchTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E298F03EA5D3A537BA58A7D /* Pods-OMBDSearchUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OMBDSearchUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OMBDSearchUITests/Pods-OMBDSearchUITests.release.xcconfig"; sourceTree = "<group>"; };
+		9AB983EDFF8B1C81C409C8D4 /* libPods-OMBDSearch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OMBDSearch.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B50A2A5C1E4E203F00B3B496 /* MovieCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieCollectionViewController.h; sourceTree = "<group>"; };
+		B50A2A5D1E4E203F00B3B496 /* MovieCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieCollectionViewController.m; sourceTree = "<group>"; };
+		B50A2A5F1E4E331A00B3B496 /* MovieCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieCollectionViewCell.h; sourceTree = "<group>"; };
+		B50A2A601E4E331A00B3B496 /* MovieCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieCollectionViewCell.m; sourceTree = "<group>"; };
 		B548742F1D59A94F007FB1E9 /* SearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTableViewController.h; sourceTree = "<group>"; };
 		B54874301D59A94F007FB1E9 /* SearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SearchTableViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B54874341D59ABAB007FB1E9 /* Movie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Movie.h; sourceTree = "<group>"; };
@@ -67,8 +78,6 @@
 		B548748A1D5C6BF1007FB1E9 /* Movies+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Movies+CoreDataProperties.m"; sourceTree = "<group>"; };
 		B548748B1D5C6BF1007FB1E9 /* Movies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Movies.h; sourceTree = "<group>"; };
 		B548748C1D5C6BF1007FB1E9 /* Movies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Movies.m; sourceTree = "<group>"; };
-		B54874901D5D7466007FB1E9 /* MovieDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieDetailViewController.h; sourceTree = "<group>"; };
-		B54874911D5D7466007FB1E9 /* MovieDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieDetailViewController.m; sourceTree = "<group>"; };
 		B569F0B91D59A17000F1DF2D /* OMBDSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OMBDSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B569F0BD1D59A17000F1DF2D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B569F0BF1D59A17000F1DF2D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -84,6 +93,8 @@
 		B569F0E01D59A17000F1DF2D /* OMBDSearchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OMBDSearchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B569F0E41D59A17000F1DF2D /* OMBDSearchUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OMBDSearchUITests.m; sourceTree = "<group>"; };
 		B569F0E61D59A17000F1DF2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5E201B61E53B2C9006D8F8A /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		B5E201B71E53B2C9006D8F8A /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,7 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3EA39B64332EAE066EE1EB3D /* libPods-OMBDSearch.a in Frameworks */,
+				627206961F4F48A2C603C298 /* libPods-OMBDSearch.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E598CE454CAF8916BEA213A /* libPods-OMBDSearchTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,16 +118,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A734AF14FC8ADEB01AE5CC7 /* libPods-OMBDSearchUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		412017E303A642A986AEA697 /* Frameworks */ = {
+		1D610463DFF231254A52E161 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				0EADF4B7C7E46F330CF8A04B /* libPods-OMBDSearch.a */,
+				33A46DEC7E5E1CC39AEDC042 /* Pods-OMBDSearch.debug.xcconfig */,
+				0D13D6706110C1456A51F03C /* Pods-OMBDSearch.release.xcconfig */,
+				0DBD735D576AEA916C45A459 /* Pods-OMBDSearchTests.debug.xcconfig */,
+				29D190CDA9128C1C4708DCAA /* Pods-OMBDSearchTests.release.xcconfig */,
+				2C69424E839D13B6B1CDB7A3 /* Pods-OMBDSearchUITests.debug.xcconfig */,
+				7E298F03EA5D3A537BA58A7D /* Pods-OMBDSearchUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		2405E53082187F73D2E4C61E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9AB983EDFF8B1C81C409C8D4 /* libPods-OMBDSearch.a */,
+				5812EF00DB53472D1A87FAA3 /* libPods-OMBDSearchTests.a */,
+				534990C6A34D6C4A51ABB2A7 /* libPods-OMBDSearchUITests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -143,6 +171,8 @@
 				B548743B1D5A5E09007FB1E9 /* SearchTableViewCell.m */,
 				B54874861D5C538D007FB1E9 /* MovieTableViewCell.h */,
 				B54874871D5C538D007FB1E9 /* MovieTableViewCell.m */,
+				B50A2A5F1E4E331A00B3B496 /* MovieCollectionViewCell.h */,
+				B50A2A601E4E331A00B3B496 /* MovieCollectionViewCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -150,10 +180,10 @@
 		B54874941D5D9DE1007FB1E9 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B548742C1D59A7BD007FB1E9 /* MovieTableViewController.h */,
-				B548742D1D59A7BD007FB1E9 /* MovieTableViewController.m */,
-				B54874901D5D7466007FB1E9 /* MovieDetailViewController.h */,
-				B54874911D5D7466007FB1E9 /* MovieDetailViewController.m */,
+				B50A2A5C1E4E203F00B3B496 /* MovieCollectionViewController.h */,
+				B50A2A5D1E4E203F00B3B496 /* MovieCollectionViewController.m */,
+				B5E201B61E53B2C9006D8F8A /* DetailViewController.h */,
+				B5E201B71E53B2C9006D8F8A /* DetailViewController.m */,
 				B548742F1D59A94F007FB1E9 /* SearchTableViewController.h */,
 				B54874301D59A94F007FB1E9 /* SearchTableViewController.m */,
 				B548743D1D5A7184007FB1E9 /* SearchDetailViewController.h */,
@@ -169,8 +199,8 @@
 				B569F0D81D59A17000F1DF2D /* OMBDSearchTests */,
 				B569F0E31D59A17000F1DF2D /* OMBDSearchUITests */,
 				B569F0BA1D59A17000F1DF2D /* Products */,
-				BF1C786F95EFDC0E07C874ED /* Pods */,
-				412017E303A642A986AEA697 /* Frameworks */,
+				1D610463DFF231254A52E161 /* Pods */,
+				2405E53082187F73D2E4C61E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -227,15 +257,6 @@
 			path = OMBDSearchUITests;
 			sourceTree = "<group>";
 		};
-		BF1C786F95EFDC0E07C874ED /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				451ACF6BBF07999CCF5E4670 /* Pods-OMBDSearch.debug.xcconfig */,
-				2D7F9217E79356EAC0AA6071 /* Pods-OMBDSearch.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -243,12 +264,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B569F0E91D59A17100F1DF2D /* Build configuration list for PBXNativeTarget "OMBDSearch" */;
 			buildPhases = (
-				F3E62A8437A4CA0F18AD6D7A /* Check Pods Manifest.lock */,
+				E49D604146E16864BEEE43D5 /* [CP] Check Pods Manifest.lock */,
 				B569F0B51D59A17000F1DF2D /* Sources */,
 				B569F0B61D59A17000F1DF2D /* Frameworks */,
 				B569F0B71D59A17000F1DF2D /* Resources */,
-				7F4AD35EFD5E474B740AAC2A /* Embed Pods Frameworks */,
-				B18EF5C1E70A2551C19974B9 /* Copy Pods Resources */,
+				0F12BC6D297012057588C4F1 /* [CP] Embed Pods Frameworks */,
+				218E1826234C5653EB87775D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -263,9 +284,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B569F0EC1D59A17100F1DF2D /* Build configuration list for PBXNativeTarget "OMBDSearchTests" */;
 			buildPhases = (
+				A15316F6B3A8093F4DCB94A4 /* [CP] Check Pods Manifest.lock */,
 				B569F0D11D59A17000F1DF2D /* Sources */,
 				B569F0D21D59A17000F1DF2D /* Frameworks */,
 				B569F0D31D59A17000F1DF2D /* Resources */,
+				BB1868EA6C5BA3BC7043298B /* [CP] Embed Pods Frameworks */,
+				7A44AEA8DADF20F6C4CC80E8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -281,9 +305,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B569F0EF1D59A17100F1DF2D /* Build configuration list for PBXNativeTarget "OMBDSearchUITests" */;
 			buildPhases = (
+				60A8B9B0216699100BC0F834 /* [CP] Check Pods Manifest.lock */,
 				B569F0DC1D59A17000F1DF2D /* Sources */,
 				B569F0DD1D59A17000F1DF2D /* Frameworks */,
 				B569F0DE1D59A17000F1DF2D /* Resources */,
+				297F16D004673AD3073E3BB5 /* [CP] Embed Pods Frameworks */,
+				603B7DDDB36CEE2EDD4BBDE2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -365,14 +392,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		7F4AD35EFD5E474B740AAC2A /* Embed Pods Frameworks */ = {
+		0F12BC6D297012057588C4F1 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,14 +407,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OMBDSearch/Pods-OMBDSearch-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B18EF5C1E70A2551C19974B9 /* Copy Pods Resources */ = {
+		218E1826234C5653EB87775D /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -395,19 +422,109 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OMBDSearch/Pods-OMBDSearch-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F3E62A8437A4CA0F18AD6D7A /* Check Pods Manifest.lock */ = {
+		297F16D004673AD3073E3BB5 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OMBDSearchUITests/Pods-OMBDSearchUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		603B7DDDB36CEE2EDD4BBDE2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OMBDSearchUITests/Pods-OMBDSearchUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		60A8B9B0216699100BC0F834 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7A44AEA8DADF20F6C4CC80E8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OMBDSearchTests/Pods-OMBDSearchTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A15316F6B3A8093F4DCB94A4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BB1868EA6C5BA3BC7043298B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OMBDSearchTests/Pods-OMBDSearchTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E49D604146E16864BEEE43D5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -417,16 +534,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B54874921D5D7466007FB1E9 /* MovieDetailViewController.m in Sources */,
 				B569F0C11D59A17000F1DF2D /* AppDelegate.m in Sources */,
 				B54874371D59ABAB007FB1E9 /* Movie.m in Sources */,
+				B5E201B81E53B2C9006D8F8A /* DetailViewController.m in Sources */,
+				B50A2A5E1E4E204000B3B496 /* MovieCollectionViewController.m in Sources */,
 				B54874881D5C538D007FB1E9 /* MovieTableViewCell.m in Sources */,
-				B548742E1D59A7BD007FB1E9 /* MovieTableViewController.m in Sources */,
 				B548748E1D5C6BF1007FB1E9 /* Movies.m in Sources */,
 				B548743F1D5A7184007FB1E9 /* SearchDetailViewController.m in Sources */,
 				B548743C1D5A5E09007FB1E9 /* SearchTableViewCell.m in Sources */,
 				B54874671D5AEF62007FB1E9 /* IMDbModel.m in Sources */,
 				B548748D1D5C6BF1007FB1E9 /* Movies+CoreDataProperties.m in Sources */,
+				B50A2A611E4E331A00B3B496 /* MovieCollectionViewCell.m in Sources */,
 				B54874311D59A94F007FB1E9 /* SearchTableViewController.m in Sources */,
 				B569F0BE1D59A17000F1DF2D /* main.m in Sources */,
 				B569F0CA1D59A17000F1DF2D /* OMBDSearch.xcdatamodeld in Sources */,
@@ -568,7 +686,7 @@
 		};
 		B569F0EA1D59A17100F1DF2D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 451ACF6BBF07999CCF5E4670 /* Pods-OMBDSearch.debug.xcconfig */;
+			baseConfigurationReference = 33A46DEC7E5E1CC39AEDC042 /* Pods-OMBDSearch.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = OMBDSearch/Info.plist;
@@ -580,7 +698,7 @@
 		};
 		B569F0EB1D59A17100F1DF2D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2D7F9217E79356EAC0AA6071 /* Pods-OMBDSearch.release.xcconfig */;
+			baseConfigurationReference = 0D13D6706110C1456A51F03C /* Pods-OMBDSearch.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = OMBDSearch/Info.plist;
@@ -592,6 +710,7 @@
 		};
 		B569F0ED1D59A17100F1DF2D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0DBD735D576AEA916C45A459 /* Pods-OMBDSearchTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = OMBDSearchTests/Info.plist;
@@ -604,6 +723,7 @@
 		};
 		B569F0EE1D59A17100F1DF2D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29D190CDA9128C1C4708DCAA /* Pods-OMBDSearchTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = OMBDSearchTests/Info.plist;
@@ -616,6 +736,7 @@
 		};
 		B569F0F01D59A17100F1DF2D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C69424E839D13B6B1CDB7A3 /* Pods-OMBDSearchUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = OMBDSearchUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -627,6 +748,7 @@
 		};
 		B569F0F11D59A17100F1DF2D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7E298F03EA5D3A537BA58A7D /* Pods-OMBDSearchUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = OMBDSearchUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

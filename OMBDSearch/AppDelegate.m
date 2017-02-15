@@ -2,8 +2,8 @@
 //  AppDelegate.m
 //  OMBDSearch
 //
-//  Created by Gabriel Targon on 8/9/16.
-//  Copyright © 2016 gabrieltargon. All rights reserved.
+//  Created by Gabriel Targon on 2/6/17.
+//  Copyright © 2017 gabrieltargon. All rights reserved.
 //
 
 #import "AppDelegate.h"
@@ -17,6 +17,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [[UINavigationBar appearance] setBarTintColor:[UIColor orangeColor]];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    
     return YES;
 }
 

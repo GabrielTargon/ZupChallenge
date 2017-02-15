@@ -2,8 +2,8 @@
 //  Movies.m
 //  OMBDSearch
 //
-//  Created by Gabriel Targon on 8/11/16.
-//  Copyright © 2016 gabrieltargon. All rights reserved.
+//  Created by Gabriel Targon on 2/9/17.
+//  Copyright © 2017 gabrieltargon. All rights reserved.
 //
 
 #import "Movies.h"
